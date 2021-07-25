@@ -30,6 +30,7 @@ const createWindow = () => {
 };
 
 ipcMain.on("notify", (_, message) => {
+  console.log("bundle");
   new Notification({ title: "Test Notifiation", body: message }).show();
 });
 

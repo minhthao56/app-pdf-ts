@@ -3,4 +3,5 @@ dist
 packages
 .webpack
 out
-package-lock.json
+package-lock*
+bundle

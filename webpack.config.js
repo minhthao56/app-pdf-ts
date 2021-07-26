@@ -2,13 +2,13 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   devtool: "inline-source-map",
   target: "electron-renderer",
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -29,22 +29,15 @@ module.exports = {
       },
       {
         test: [/\.s[ac]ss$/i, /\.css$/i],
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
   resolve: {
-    extensions: [".js"],
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: "app.js",
-    path: path.resolve(__dirname, "build"),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "bundle"),
   },
 };
